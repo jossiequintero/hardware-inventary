@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('modelo');
             $table->string('serie');
             $table->string('condicion');
-            $table->integer('id_computadora')->unsigned();
+            $table->unsignedBigInteger('id_computadora')->unsigned();
             $table->timestamps();
             $table->foreign('id_computadora')->references('id')->on('computadora');
         });

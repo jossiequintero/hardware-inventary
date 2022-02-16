@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('camara', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_dispositivo')->unsigned();
+            $table->unsignedBigInteger('id_dispositivo')->unsigned();
             $table->foreign('id_dispositivo')->references('id')->on('dispositivo');
         });
     }
