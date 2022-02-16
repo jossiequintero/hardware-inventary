@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('computadora', function (Blueprint $table) {
             $table->id();
             $table->string('numero_identificacion');
-            $table->integer('id_dispositivo')->unsigned();
+            $table->unsignedBigInteger('id_dispositivo');
             $table->foreign('id_dispositivo')->references('id')->on('dispositivo');
         });
     }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->date('fecha_mantenimiento');
             $table->string('estado');
-            $table->integer('id_area')->unsigned();
+            $table->unsignedBigInteger('id_area');
             $table->foreign('id_area')->references('id')->on('area');
             $table->timestamps();
         });
