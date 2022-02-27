@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('responsable_area', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_responsable');
+        Schema::create('user_area', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_area');
-            $table->foreign('id_responsable')->references('id')->on('responsable');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_area')->references('id')->on('area');
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('responsable_area');
+        Schema::dropIfExists('user_area');
     }
 };
