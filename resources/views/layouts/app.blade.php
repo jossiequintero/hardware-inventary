@@ -38,7 +38,7 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Departamentos
+                            <a class="nav-link active" href="{{ route('departamento.index') }}">Departamentos
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
