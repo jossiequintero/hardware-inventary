@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Departamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DepartamentoController extends Controller
 {
@@ -12,7 +13,18 @@ class DepartamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'nombre' => ['required', 'string', 'max:255','unique:departamento,'],
+        ]);
+    }
+     public function index()
     {
         $departamentos =  Departamento::all();
         return view('departamento.inicio',compact('departamentos'));
@@ -25,7 +37,7 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        return "<h1>Soy el controllardor</h2>";
+        return view('departamento.nuevo');
     }
 
     /**
@@ -36,7 +48,8 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Departamento::create($request->all());
+        return redirect()->back()->with('estado','Se guardó con exito!');
     }
 
     /**
@@ -58,7 +71,8 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departamento = Departamento::find($id);
+        return view('departamento.actualizar',compact('departamento'));
     }
 
     /**
@@ -70,7 +84,10 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->nombre = $request->get('nombre');
+        $departamento->save();
+        return back()->with('estado','Se actualizó con exito!');
     }
 
     /**
@@ -81,6 +98,8 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->delete();
+        return back()->with("estado","Se eliminó con exito");
     }
 }
