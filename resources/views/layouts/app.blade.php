@@ -8,9 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
 
     <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,7 +20,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
@@ -41,18 +42,19 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('departamento.index') }}">Departamentos
+                            <a class="nav-link @yield('active_facultad')"
+                                href="{{ route('facultad.index') }}">Facultades
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Areas</a>
+                            <a class="nav-link @yield('active_area')" href="{{ route('area.index') }}">Areas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Dispositivos</a>
+                            <a class="nav-link @yield('active_dispositivo')" href="#">Dispositivos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reportes</a>
+                            <a class="nav-link @yield('active_reporte')" href="#">Reportes</a>
                         </li>
                         @endauth
                     </ul>
@@ -80,7 +82,7 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.event.preventDefault();document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar Sessión') }}
                                 </a>
 
@@ -98,8 +100,6 @@
             @yield('content')
         </main>
     </div>
-    {{-- <script src="js/main.js"></script> --}}
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

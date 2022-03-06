@@ -1,15 +1,19 @@
 @extends('layouts.app')
-
+@section('title')
+{{ 'Areas | ' . config('app.name') }}
+@endsection()
+@section('active_area')
+{{ 'active ' }}
+@endsection()
 @section('content')
 <div class="container p-5">
-    <a href="{{ route('departamento.create') }}" class="btn btn-primary">{{ __('Añadir') }}</a>
+    <div class="d-flex justify-content-end">
+        <a href="{{ route('area.create') }}" class="btn btn-primary">{{ __('Añadir') }}</a>
+    </div>
     <table class="table table-bordered">
-
         <h2>
-            <caption class="text-center">Departamentos</caption>
+            <caption class="text-center">Areas</caption>
         </h2>
-        <button onclick='decirHello()'>Hello</button>
-
         <thead class=" bg-primary text-white ">
             <tr>
                 <th>ID</th>
@@ -17,14 +21,13 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        @foreach ($departamentos as $departamento)
+        @foreach ($areas as $area)
         <tr>
-            <td>{{ $departamento->id }}</td>
-            <td>{{ $departamento->nombre }}</td>
+            <td>{{ $area->id }}</td>
+            <td>{{ $area->nombre }}</td>
             <td class="">
-                <a href="{{ route('departamento.edit', $departamento->id)}}"
-                    class="text-white btn btn-primary">Editar</a>
-                <form action="{{ route('departamento.destroy', $departamento->id) }}" method="POST" class="d-inline">
+                <a href="{{ route('area.edit', $area->id)}}" class="text-white btn btn-primary">Editar</a>
+                <form action="{{ route('area.destroy', $area->id) }}" method="POST" class="d-inline">
                     <input type="submit" value="Eliminar" class="btn btn-danger">
                     {{ method_field('DELETE') }}
                     @csrf

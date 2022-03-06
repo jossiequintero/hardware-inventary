@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Departamento extends Model
+class Facultad extends Model
 {
     use HasFactory;
 
-    protected $table="departamento";
-    protected $primarykey = "id";
-    protected $fillable =[
+    protected $table='facultad';
+    protected $primarykey='id';
+    protected $fillable = [
         'nombre',
+        'created_at',
+        'updated_at',
     ];
 }

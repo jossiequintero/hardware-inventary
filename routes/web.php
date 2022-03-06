@@ -21,4 +21,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/departamentos', 'DepartamentoController')->names('departamento');
+Route::resource('/facultades', 'FacultadController')->names('facultad');
+Route::resource('/areas', 'AreaController')->names('area');

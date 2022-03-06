@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departamento;
+use App\Models\Facultad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class DepartamentoController extends Controller
+class facultadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +21,13 @@ class DepartamentoController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nombre' => ['required', 'string', 'max:255','unique:departamento'],
+            'nombre' => ['required', 'string', 'max:255','unique:facultad'],
         ])->validate();
     }
     public function index()
     {
-        $departamentos =  Departamento::all();
-        return view('departamento.inicio',compact('departamentos'));
+        $facultades =  facultad::all();
+        return view('layout-facultad.inicio',compact('facultades'));
     }
 
     /**
@@ -37,7 +37,7 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        return view('departamento.nuevo');
+        return view('layout-facultad.nuevo');
     }
 
     /**
@@ -49,7 +49,7 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $this->validator($request->all());
-        Departamento::create($request->all());
+        facultad::create($request->all());
         return redirect()->back()->with('estado','Se guardó con exito!');
     }
 
@@ -72,8 +72,8 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        $departamento = Departamento::find($id);
-        return view('departamento.actualizar',compact('departamento'));
+        $facultad = facultad::find($id);
+        return view('layout-facultad.actualizar',compact('facultad'));
     }
 
     /**
@@ -85,9 +85,9 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $departamento = Departamento::find($id);
-        $departamento->nombre = $request->get('nombre');
-        $departamento->save();
+        $facultad = facultad::find($id);
+        $facultad->nombre = $request->get('nombre');
+        $facultad->save();
         return back()->with('estado','Se actualizó con exito!');
     }
 
@@ -99,8 +99,8 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        $departamento = Departamento::find($id);
-        $departamento->delete();
+        $facultad = facultad::find($id);
+        $facultad->delete();
         return back()->with("estado","Se eliminó con exito");
     }
 }
