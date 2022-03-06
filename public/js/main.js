@@ -1,0 +1,3 @@
+function decirHello() {
+    alert("Heelo")
+}

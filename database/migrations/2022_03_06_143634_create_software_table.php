@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departamento', function (Blueprint $table) {
+        Schema::create('software', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('serial');
+            $table->string('tipo_licencia');
+            $table->string('tipo_software');
             $table->timestamps();
+            $table->unsignedBigInteger('id_dispositivo');
+            $table->foreign('id_dispositivo')->references('id')->on('dispositivo');
         });
     }
 
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamento');
+        Schema::dropIfExists('software');
     }
 };

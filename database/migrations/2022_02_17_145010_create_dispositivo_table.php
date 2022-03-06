@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('dispositivo', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
             $table->string('tipo');
             $table->string('descripcion');
+            $table->string('marca');
+            $table->string('modelo');
+            $table->string('numero_serie');
+            $table->string('numero_identificacion');
+            $table->date('fecha_instalacion');
             $table->date('fecha_mantenimiento');
             $table->string('estado');
             $table->unsignedBigInteger('id_area');

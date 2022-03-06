@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('camara', function (Blueprint $table) {
+        Schema::create('facultad', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_dispositivo')->unsigned();
-            $table->foreign('id_dispositivo')->references('id')->on('dispositivo');
+            $table->string('nombre');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('camara');
+        Schema::dropIfExists('facultad');
     }
 };

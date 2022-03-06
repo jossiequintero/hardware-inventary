@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('modelo');
             $table->string('serie');
             $table->string('condicion');
-            $table->unsignedBigInteger('id_computadora')->unsigned();
+            $table->unsignedBigInteger('id_dispositivo')->unsigned();
             $table->timestamps();
-            $table->foreign('id_computadora')->references('id')->on('computadora');
+            $table->foreign('id_dispositivo')->references('id')->on('dispositivo');
         });
     }
 

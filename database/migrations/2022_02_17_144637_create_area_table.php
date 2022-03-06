@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->unsignedBigInteger('id_departamento');
-            $table->foreign('id_departamento')->references('id')->on('departamento');
+            $table->unsignedBigInteger('id_facultad');
+            $table->foreign('id_facultad')->references('id')->on('facultad');
             $table->timestamps();
         });
     }

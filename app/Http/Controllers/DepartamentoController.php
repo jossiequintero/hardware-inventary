@@ -21,10 +21,10 @@ class DepartamentoController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nombre' => ['required', 'string', 'max:255','unique:departamento,'],
-        ]);
+            'nombre' => ['required', 'string', 'max:255','unique:departamento'],
+        ])->validate();
     }
-     public function index()
+    public function index()
     {
         $departamentos =  Departamento::all();
         return view('departamento.inicio',compact('departamentos'));
@@ -48,6 +48,7 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validator($request->all());
         Departamento::create($request->all());
         return redirect()->back()->with('estado','Se guardó con exito!');
     }

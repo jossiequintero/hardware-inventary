@@ -11,7 +11,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,8 +18,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" /> 
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
 </head>
 
 <body>
@@ -29,7 +30,7 @@
             <div class="container-fluid">
                 <h2>
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Sistema de Inventario para Hardware') }}
+                        {{ config('app.name') }}
                     </a>
                 </h2>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
@@ -79,7 +80,7 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    onclick="event.event.preventDefault();document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar Sessión') }}
                                 </a>
 
@@ -97,6 +98,8 @@
             @yield('content')
         </main>
     </div>
+    {{-- <script src="js/main.js"></script> --}}
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>
