@@ -14,9 +14,12 @@ class Area extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
-        'id_facultad',
+        'facultad_id',
         'created_at',
         'updated_at',
     ];
-
+    public function facultad()
+    {
+        return $this->belongsTo(Facultad::class);
+    }
 }

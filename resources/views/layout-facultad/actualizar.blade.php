@@ -6,7 +6,7 @@
         <form action="{{ route('facultad.update',$facultad->id) }}" method="POST" class="p-5">
             @csrf
             @method('PUT')
-            <h2>Nuevo facultad</h2>
+            <h2>Actualizar Facultad</h2>
             <div class="form-group">
                 <legend>Nombre</legend>
                 <input type="text" name="nombre" class="form-control" placeholder="Nombre"

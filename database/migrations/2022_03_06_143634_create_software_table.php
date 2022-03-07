@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('tipo_licencia');
             $table->string('tipo_software');
             $table->timestamps();
-            $table->unsignedBigInteger('id_dispositivo');
-            $table->foreign('id_dispositivo')->references('id')->on('dispositivo');
+            $table->unsignedBigInteger('dispositivo_id');
+            $table->foreign('dispositivo_id')->references('id')->on('dispositivo');
         });
     }
 

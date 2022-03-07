@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('area', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->unsignedBigInteger('id_facultad');
-            $table->foreign('id_facultad')->references('id')->on('facultad');
+            $table->string('descripcion')->nullable();
+            $table->unsignedBigInteger('facultad_id');
+            $table->foreign('facultad_id')->references('id')->on('facultad');
             $table->timestamps();
         });
     }

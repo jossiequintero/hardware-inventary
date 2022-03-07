@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
             'cedula' => '0850472366',
             'email'=>'quinterojosy@gmail.com',
             'password' => Hash::make('12345678'),
-            'create_at'=>now(),
-            'update_at'=>now(),
+            'created_at'=>now(),
+            'updated_at'=>now(),
         ]);
     }
 }

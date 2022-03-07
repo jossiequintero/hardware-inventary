@@ -19,14 +19,14 @@ class AreaSeeder extends Seeder
             'descripcion'=>'',
             'created_at'=> now(),
             'updated_at'=> now(),
-            'id_facultad'=>1,
+            'facultad_id'=>1,
         ]);
         DB::table('area')->insert([
             'nombre'=>'Laborario #2',
             'descripcion'=>'',
             'created_at'=> now(),
             'updated_at'=> now(),
-            'id_facultad'=>1,
+            'facultad_id'=>1,
         ]);
     }
 }

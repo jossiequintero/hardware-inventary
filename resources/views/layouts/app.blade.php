@@ -51,7 +51,8 @@
                             <a class="nav-link @yield('active_area')" href="{{ route('area.index') }}">Areas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @yield('active_dispositivo')" href="#">Dispositivos</a>
+                            <a class="nav-link @yield('active_dispositivo')"
+                                href="{{ route('dispositivo.index') }}">Dispositivos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @yield('active_reporte')" href="#">Reportes</a>
@@ -85,7 +86,6 @@
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar Sessión') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

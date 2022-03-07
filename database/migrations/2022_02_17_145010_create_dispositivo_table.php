@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('dispositivo', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
-            $table->string('descripcion');
-            $table->string('marca');
-            $table->string('modelo');
-            $table->string('numero_serie');
-            $table->string('numero_identificacion');
-            $table->date('fecha_instalacion');
-            $table->date('fecha_mantenimiento');
-            $table->string('estado');
-            $table->unsignedBigInteger('id_area');
-            $table->foreign('id_area')->references('id')->on('area');
+            $table->string('descripcion')->nullable();
+            $table->string('marca')->nullable();
+            $table->string('modelo')->nullable();
+            $table->string('numero_serie')->nullable();
+            $table->string('numero_identificacion')->nullable();
+            $table->date('fecha_instalacion')->nullable();
+            $table->date('fecha_mantenimiento')->nullable();
+            $table->string('estado')->nullable();
+            $table->unsignedBigInteger('area_id')->nullable();
+            $table->foreign('area_id')->references('id')->on('area');
             $table->timestamps();
         });
     }
